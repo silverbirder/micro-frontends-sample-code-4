@@ -24,5 +24,8 @@
     "concurrently": "^4.1.0",
     "opener": "^1.5.1",
     "sleep-ms": "^2.0.1"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
   }
 }
