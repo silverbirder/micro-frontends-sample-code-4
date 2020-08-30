@@ -1,0 +1,6 @@
+dist
+node_modules
+view
+.gitignore
+fly.toml
+README.md

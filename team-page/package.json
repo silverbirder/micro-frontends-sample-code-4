@@ -1,0 +1,25 @@
+{
+  "name": "team-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "prestart": "npm run build:prod",
+    "dev": "node server.js",
+    "predev": "npm run build:dev",
+    "build:prod": "webpack --mode=production --config webpack.config.js",
+    "build:dev": "webpack --mode=development --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-tailor": "^3.9.2",
+    "postal": "^2.0.5"
+  },
+  "devDependencies": {
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
