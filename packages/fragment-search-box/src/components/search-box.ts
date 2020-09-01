@@ -1,5 +1,4 @@
 import {LitElement, html, customElement, css, property, eventOptions} from 'lit-element';
-import {ProductItem} from './product-item'
 
 @customElement('search-box')
 export class SearchBox extends LitElement {
@@ -14,13 +13,9 @@ export class SearchBox extends LitElement {
     @property({type: String})
     keyword = '';
 
-    @property()
-    productItemComponents: ProductItem[] = [];
-
     render() {
         return html`
 　　  <input type="text" id="keyword" @change="${this._onChange}" value="${this.keyword}"><button @click="${this._onClick}">検索</button>
-      ${this.productItemComponents}
     `;
     }
 
@@ -35,10 +30,7 @@ export class SearchBox extends LitElement {
             detail: {
                 keyword: keyword,
                 callback: (async (keyword: string) => {
-                    const productItemComponent = new ProductItem();
-                    productItemComponent.name = keyword;
-                    this.productItemComponents = [];
-                    this.productItemComponents.push(productItemComponent);
+                    console.log(keyword);
                     const map = new Map();
                     this.update(map)
                 }).bind(this)

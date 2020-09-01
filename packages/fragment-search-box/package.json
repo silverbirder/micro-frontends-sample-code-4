@@ -21,13 +21,13 @@
   "bugs": {
     "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
   },
-  "dependencies": {
-    "lit-element": "^2.4.0",
+  "devDependencies": {
+    "ts-loader": "^8.0.3",
     "typescript": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "devDependencies": {
-    "ts-loader": "^8.0.3"
+  "dependencies": {
+    "lit-element": "^2.4.0"
   }
 }
