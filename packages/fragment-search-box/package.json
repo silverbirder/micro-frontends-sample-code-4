@@ -5,7 +5,7 @@
   "author": "shibamoto <silverbirder@gmail.com>",
   "homepage": "https://github.com/Silver-birder/micro-frontends-sample-code-4#readme",
   "license": "MIT",
-  "main": "fragment.js",
+  "main": "src/client.ts",
   "publishConfig": {
     "access": "public"
   },

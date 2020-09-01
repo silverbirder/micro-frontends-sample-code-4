@@ -1,3 +1,5 @@
 import {SearchBox} from './components/search-box'
 
-exports.SearchBox = SearchBox;
+export default {
+    SearchBox: SearchBox
+};
