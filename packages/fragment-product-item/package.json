@@ -1,5 +1,5 @@
 {
-  "name": "@search/fragment-search-box",
+  "name": "@product/fragment-product-item",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "shibamoto <silverbirder@gmail.com>",
@@ -28,7 +28,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@product/fragment-product-item": "^0.0.0",
     "lit-element": "^2.4.0"
   }
 }

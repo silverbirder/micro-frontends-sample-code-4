@@ -12,12 +12,12 @@ const server = http.createServer((req, res) => {
     default:
       res.writeHead(200, {
         'Content-Type': 'text/html',
-        'Link': '<http://localhost:8090/public/bundle.js>; rel="fragment-script"'
+        'Link': '<http://localhost:8070/public/bundle.js>; rel="fragment-script"'
       })
       return res.end('')
   }
 })
 
-server.listen(8090, () => {
-  console.log('Fragment Server started at 8090')
+server.listen(8070, () => {
+  console.log('Fragment Server started at 8070')
 })

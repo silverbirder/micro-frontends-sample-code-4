@@ -1,4 +1,5 @@
 import {LitElement, html, customElement, css, property, eventOptions} from 'lit-element';
+import ProductItem from '@product/fragment-product-item';
 
 @customElement('search-box')
 export class SearchBox extends LitElement {
@@ -13,9 +14,15 @@ export class SearchBox extends LitElement {
     @property({type: String})
     keyword = '';
 
+    @property()
+    component = new ProductItem.ProductItem()
+
     render() {
         return html`
-　　  <input type="text" id="keyword" @change="${this._onChange}" value="${this.keyword}"><button @click="${this._onClick}">検索</button>
+         <div>
+            <input type="text" id="keyword" @change="${this._onChange}" value="${this.keyword}"><button @click="${this._onClick}">検索</button>     
+            ${this.component}
+         </div>
     `;
     }
 
