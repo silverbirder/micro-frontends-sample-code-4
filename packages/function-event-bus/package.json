@@ -1,0 +1,33 @@
+{
+  "name": "@controller/function-event-bus",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "shibamoto <silverbirder@gmail.com>",
+  "homepage": "https://github.com/Silver-birder/micro-frontends-sample-code-4#readme",
+  "license": "MIT",
+  "main": "src/client.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silver-birder/micro-frontends-sample-code-4.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "@product/fragment-product-item": "^0.0.0",
+    "@search/fragment-search-box": "^0.0.0",
+    "lit-element": "^2.4.0"
+  }
+}
