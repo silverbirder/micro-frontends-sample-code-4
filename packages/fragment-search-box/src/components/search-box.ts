@@ -15,7 +15,7 @@ export class SearchBox extends LitElement {
     keyword = '';
 
     @property()
-    component = new ProductItem.ProductItem()
+    component = new ProductItem();
 
     render() {
         return html`

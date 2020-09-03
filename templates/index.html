@@ -1,17 +1,25 @@
 <!doctype html>
 <html>
 <head>
-  <title>Tailor Example Application</title>
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-  <style>
-    body {
-      background: #ECEFF4;
-    }
-  </style>
+    <script>
+        const _customElementsDefine = window.customElements.define;
+        window.customElements.define = (tagName, clazz) => {
+            if (!window.customElements.get(tagName)) {
+                _customElementsDefine.call(window.customElements, tagName, clazz);
+            }
+        };
+    </script>
+    <title>Tailor Example Application</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <style>
+        body {
+            background: #ECEFF4;
+        }
+    </style>
 </head>
 <body>
-  <search-box></search-box>
-  <fragment src="http://localhost:8090"></fragment>
-  <fragment src="http://localhost:8070"></fragment>
+<search-box></search-box>
+<fragment src="http://localhost:8090"></fragment>
+<fragment src="http://localhost:8070"></fragment>
 </body>
 </html>
