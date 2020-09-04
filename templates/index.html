@@ -1,14 +1,6 @@
 <!doctype html>
 <html>
 <head>
-    <script>
-        const _customElementsDefine = window.customElements.define;
-        window.customElements.define = (tagName, clazz) => {
-            if (!window.customElements.get(tagName)) {
-                _customElementsDefine.call(window.customElements, tagName, clazz);
-            }
-        };
-    </script>
     <title>Tailor Example Application</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <style>
@@ -19,7 +11,8 @@
 </head>
 <body>
 <search-box></search-box>
-<fragment src="http://localhost:8090"></fragment>
-<fragment src="http://localhost:8070"></fragment>
+<fragment src="http://localhost:7010"></fragment>
+<fragment src="http://localhost:7000"></fragment>
+<fragment src="http://localhost:8000"></fragment>
 </body>
 </html>

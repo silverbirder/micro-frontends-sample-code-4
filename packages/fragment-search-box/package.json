@@ -28,7 +28,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@product/fragment-product-item": "^0.0.0",
     "lit-element": "^2.4.0"
   }
 }

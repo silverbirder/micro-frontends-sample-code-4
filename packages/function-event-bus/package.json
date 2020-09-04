@@ -14,7 +14,9 @@
     "url": "git+https://github.com/Silver-birder/micro-frontends-sample-code-4.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "webpack -p",
+    "watch": "webpack -w",
+    "start": "node fragment.js"
   },
   "bugs": {
     "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
