@@ -37,20 +37,24 @@ export class SearchBox extends LitElement {
                     const map = new Map();
                     this.update(map)
                 }).bind(this)
-            }
+            },
+            cancelable: true
         };
         let event: CustomEvent = new CustomEvent('search-box-button-click', search);
-        this.dispatchEvent(event);
+        const cancel = this.dispatchEvent(event);
+        console.log(cancel);
     }
 
     dispatchHistoryEvent(keyword: string) {
         const search: SearchBoxEvent = {
             detail: {
                 keyword: keyword,
-            }
+            },
+            cancelable: true
         };
         let event: CustomEvent = new CustomEvent('search-box-keyword-history', search);
-        this.dispatchEvent(event);
+        const cancel = this.dispatchEvent(event);
+        console.log(cancel);
     }
 
     @eventOptions({capture: true})
