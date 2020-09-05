@@ -6,8 +6,3 @@ searchBox?.addEventListener('search-box-button-click', async (e: Event) => {
         await callback(keyword);
     }
 });
-searchBox?.addEventListener('search-box-keyword-history', async (e: Event) => {
-    e.preventDefault();
-    const {keyword} = (e as CustomEvent).detail;
-    history.pushState({keyword: keyword}, "keyword", `?q=${keyword}`);
-});
