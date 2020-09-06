@@ -1,0 +1,42 @@
+{
+  "name": "@controller/function-renderer-proxy",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "shibamoto <silverbirder@gmail.com>",
+  "homepage": "https://github.com/Silver-birder/micro-frontends-sample-code-4#readme",
+  "license": "MIT",
+  "main": "build/rendertron.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silver-birder/micro-frontends-sample-code-4.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/rendertron.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.0.1",
+    "koa-logger": "^3.2.1",
+    "koa-route": "^3.2.0",
+    "puppeteer": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.1",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-compress": "^4.0.0",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-route": "^3.2.4",
+    "@types/puppeteer": "^3.0.1",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2"
+  }
+}
