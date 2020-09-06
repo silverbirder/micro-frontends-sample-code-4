@@ -19,5 +19,5 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(8000, () => {
-  console.log('Fragment Server started at 8000')
+  console.log('Function Server started at 8000')
 })

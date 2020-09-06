@@ -16,7 +16,7 @@
   "scripts": {
     "build": "webpack -p",
     "watch": "webpack -w",
-    "start": "node fragment.js"
+    "start": "node function.js"
   },
   "bugs": {
     "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
