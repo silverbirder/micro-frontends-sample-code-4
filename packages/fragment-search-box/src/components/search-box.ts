@@ -41,7 +41,7 @@ export class SearchBox extends LitElement {
             cancelable: true
         };
         let event: CustomEvent = new CustomEvent('search-box-button-click', search);
-        const cancel = this.dispatchEvent(event);
+        const cancel = window.dispatchEvent(event);
         console.log(cancel);
     }
 
@@ -53,7 +53,7 @@ export class SearchBox extends LitElement {
             cancelable: true
         };
         let event: CustomEvent = new CustomEvent('search-box-keyword-history', search);
-        const cancel = this.dispatchEvent(event);
+        const cancel = window.dispatchEvent(event);
         console.log(cancel);
     }
 
