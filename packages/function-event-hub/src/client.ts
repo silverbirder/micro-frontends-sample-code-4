@@ -1,7 +1,9 @@
+import {MyEvent} from "./event";
+
 window.addEventListener('search-box-button-click', async (e: Event) => {
     e.preventDefault();
-    const {keyword, callback} = (e as CustomEvent).detail;
+    const {args, callback} = (e as CustomEvent as MyEvent<String, String>).detail;
     if (callback) {
-        await callback(keyword);
+        await callback(args);
     }
 });

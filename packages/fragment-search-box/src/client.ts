@@ -1,5 +1,7 @@
 import {SearchBox} from './components/search-box'
+import {eventType} from "./event";
 
 export default {
-    SearchBox: SearchBox
+    SearchBox: SearchBox,
+    SearchEventType: eventType
 }

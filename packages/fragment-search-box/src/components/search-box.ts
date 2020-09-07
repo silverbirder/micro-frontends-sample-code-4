@@ -1,4 +1,6 @@
 import {LitElement, html, customElement, css, property, eventOptions} from 'lit-element';
+import {MyEvent} from "../../../function-event-hub/src/event";
+import {eventType} from "../event";
 
 @customElement('search-box')
 export class SearchBox extends LitElement {
@@ -31,8 +33,8 @@ export class SearchBox extends LitElement {
     dispatchKeywordEvent(keyword: string) {
         const search: SearchBoxEvent = {
             detail: {
-                keyword: keyword,
-                callback: (async (keyword: string) => {
+                args: keyword,
+                callback: (async (keyword: String) => {
                     console.log(keyword);
                     const map = new Map();
                     this.update(map)
@@ -40,7 +42,7 @@ export class SearchBox extends LitElement {
             },
             cancelable: true
         };
-        let event: CustomEvent = new CustomEvent('search-box-button-click', search);
+        let event: CustomEvent = new CustomEvent(eventType["search-box-button-click"], search);
         const cancel = window.dispatchEvent(event);
         console.log(cancel);
     }
@@ -48,7 +50,7 @@ export class SearchBox extends LitElement {
     dispatchHistoryEvent(keyword: string) {
         const search: SearchBoxEvent = {
             detail: {
-                keyword: keyword,
+                args: keyword,
             },
             cancelable: true
         };
@@ -63,10 +65,10 @@ export class SearchBox extends LitElement {
     }
 }
 
-export interface SearchBoxEvent extends CustomEventInit {
+export interface SearchBoxEvent extends MyEvent<String, String> {
     detail: {
-        keyword: String,
-        callback?(keyword: String): void
+        args: String,
+        callback?(values: String): void
     }
 }
 
