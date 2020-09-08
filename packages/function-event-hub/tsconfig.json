@@ -24,6 +24,8 @@
       }
     ]
   },
-  "include": ["../fragment-search-box/src/**/*.ts", "../fragment-product-item/src/**/*.ts"],
+  "include": [
+    "../function-event-hub/src/*.ts"
+  ],
   "exclude": []
 }

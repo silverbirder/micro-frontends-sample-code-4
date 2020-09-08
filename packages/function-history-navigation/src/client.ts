@@ -1,13 +1,15 @@
-import {SearchBox} from "@search/fragment-search-box/build/components/search-box";
+import {IHistoryEvent} from './event'
 
-const searchBox = document.querySelector('search-box') as SearchBox | null;
+// const searchBox = document.querySelector('search-box');
 window.addEventListener('search-box-keyword-history', async (e: Event) => {
     e.preventDefault();
-    const {keyword} = (e as CustomEvent).detail;
-    history.pushState({keyword: keyword}, "keyword", `?q=${keyword}`);
+    const {args} = (e as CustomEvent as IHistoryEvent<String>).detail;
+    history.pushState({keyword: args}, "keyword", `?q=${args}`);
 });
 window.onpopstate = function (event: PopStateEvent) {
     if (event.state.keyword) {
-        searchBox?.dispatchKeywordEvent(event.state.keyword)
+        // searchBox?.dispatchKeywordEvent(event.state.keyword)
     }
 };
+
+export {IHistoryEvent}
