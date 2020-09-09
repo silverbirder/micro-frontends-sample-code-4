@@ -12,7 +12,11 @@ export class SearchBox extends LitElement {
     }
   `;
     @property({type: String})
-    keyword = '';
+    keyword = `${this.getKeyword()}`;
+
+    getKeyword() {
+        return new URLSearchParams(location.search).get('q') || '';
+    }
 
     render() {
         return html`
@@ -40,18 +44,21 @@ export class SearchBox extends LitElement {
             },
             cancelable: true
         };
-        let event: CustomEvent = new CustomEvent(eventType['search-box-button-click'], search);
+        let event: CustomEvent = new CustomEvent(eventType['eventHubName'], search);
         window.dispatchEvent(event);
     }
 
     dispatchHistoryEvent(keyword: string) {
+        const data = {
+            q: keyword
+        };
         const search: SearchBoxHistoryEvent = {
             detail: {
-                args: keyword,
+                args: data,
             },
             cancelable: true
         };
-        let event: CustomEvent = new CustomEvent(eventType['search-box-keyword-history'], search);
+        let event: CustomEvent = new CustomEvent(eventType['historyNavigationName'], search);
         window.dispatchEvent(event);
     }
 

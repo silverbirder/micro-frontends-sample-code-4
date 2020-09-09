@@ -3,3 +3,5 @@ export interface IHistoryEvent<A> extends CustomEventInit {
         args: A
     }
 }
+
+export const historyNavigationName = 'trigger-history-navigation';

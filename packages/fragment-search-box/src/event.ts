@@ -2,8 +2,8 @@ import {IMyEvent} from "@controller/function-event-hub";
 import {IHistoryEvent} from "@controller/function-history-navigation";
 
 export const eventType = {
-    'search-box-button-click': 'search-box-button-click',
-    'search-box-keyword-history': 'search-box-keyword-history'
+    'eventHubName': 'trigger-event-hub',
+    'historyNavigationName': 'trigger-history-navigation'
 };
 
 export interface SearchBoxEvent extends IMyEvent<String, String> {
@@ -13,8 +13,8 @@ export interface SearchBoxEvent extends IMyEvent<String, String> {
     }
 }
 
-export interface SearchBoxHistoryEvent extends IHistoryEvent<String> {
+export interface SearchBoxHistoryEvent extends IHistoryEvent<any> {
     detail: {
-        args: String
+        args: any
     }
 }
