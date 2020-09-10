@@ -1,5 +1,6 @@
 import {LitElement, html, customElement, css, property, eventOptions} from 'lit-element';
-import {eventType, SearchBoxEvent, SearchBoxHistoryEvent} from "../event";
+import {SearchBoxEvent, SearchBoxHistoryEvent} from "../event";
+import {eventType} from '@type/common-variable';
 
 @customElement('search-box')
 export class SearchBox extends LitElement {
@@ -44,21 +45,20 @@ export class SearchBox extends LitElement {
             },
             cancelable: true
         };
-        let event: CustomEvent = new CustomEvent(eventType['eventHubName'], search);
+        let event: CustomEvent = new CustomEvent(eventType.eventHubName, search);
         window.dispatchEvent(event);
     }
 
     dispatchHistoryEvent(keyword: string) {
-        const data = {
-            q: keyword
-        };
         const search: SearchBoxHistoryEvent = {
             detail: {
-                args: data,
+                args: {
+                    q: keyword
+                },
             },
             cancelable: true
         };
-        let event: CustomEvent = new CustomEvent(eventType['historyNavigationName'], search);
+        let event: CustomEvent = new CustomEvent(eventType.historyEventName, search);
         window.dispatchEvent(event);
     }
 

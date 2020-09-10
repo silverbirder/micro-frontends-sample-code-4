@@ -1,8 +1,9 @@
-import {eventHubName, IMyEvent} from "./event";
+import {IMyEvent} from "./event";
+import {eventType} from '@type/common-variable'
 
-window.addEventListener(eventHubName, async (e: Event) => {
+window.addEventListener(eventType.eventHubName, async (e: Event) => {
     e.preventDefault();
-    const {args, callback} = (e as CustomEvent as IMyEvent<String, String>).detail;
+    const {args, callback} = (e as CustomEvent as IMyEvent<any, any>).detail;
     if (callback) {
         await callback(args);
     }

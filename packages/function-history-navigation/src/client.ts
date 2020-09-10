@@ -1,12 +1,13 @@
-import {historyNavigationName, IHistoryEvent} from './event'
+import {IHistoryEvent} from './event'
 import {Router} from '@vaadin/router';
+import {eventType} from '@type/common-variable';
 
 const router = new Router(document.getElementById('outlet'));
 router.setRoutes([
     {path: '/(.*)', component: 'search-box'}
 ]);
 
-window.addEventListener(historyNavigationName, async (e: Event) => {
+window.addEventListener(eventType.historyEventName, async (e: Event) => {
     e.preventDefault();
     let {args} = (e as CustomEvent as IHistoryEvent<any>).detail;
     if (history.state !== null) {

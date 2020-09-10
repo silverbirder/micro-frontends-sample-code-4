@@ -4,5 +4,3 @@ export interface IMyEvent<A, C> extends CustomEventInit {
         callback?(values: C): void
     }
 }
-
-export const eventHubName = 'trigger-event-hub';
