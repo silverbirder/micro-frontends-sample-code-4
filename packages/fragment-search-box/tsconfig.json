@@ -24,10 +24,6 @@
       }
     ]
   },
-  "include": [
-    "../fragment-search-box/src/**/*.ts",
-    "../function-event-hub/src/**/*.ts",
-    "../function-history-navigation/src/*.ts"
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": []
 }

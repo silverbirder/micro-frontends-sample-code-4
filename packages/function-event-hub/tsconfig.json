@@ -24,8 +24,6 @@
       }
     ]
   },
-  "include": [
-    "../function-event-hub/src/*.ts"
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": []
 }
