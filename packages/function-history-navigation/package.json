@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@type/common-variable": "^0.0.0",
-    "@vaadin/router": "^1.7.2"
+    "@vaadin/router": "^1.7.2",
+    "rxjs": "^6.6.3"
   }
 }

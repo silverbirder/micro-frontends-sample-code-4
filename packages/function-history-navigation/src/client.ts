@@ -1,21 +1,27 @@
 import {IHistoryEvent} from './event'
 import {Router} from '@vaadin/router';
 import {eventType} from '@type/common-variable';
+import {fromEvent} from "rxjs";
+import {map} from 'rxjs/operators';
 
 const router = new Router(document.getElementById('outlet'));
 router.setRoutes([
     {path: '/(.*)', component: 'search-box'}
 ]);
 
-window.addEventListener(eventType.historyEventName, async (e: Event) => {
-    e.preventDefault();
-    let {args} = (e as CustomEvent as IHistoryEvent<any>).detail;
-    if (history.state !== null) {
-        args = Object.assign(history.state, args);
-    }
-    const path = _jsonToParams(args);
-    history.pushState(args, "", `/?${path}`);
-});
+fromEvent(window, eventType.historyEventName)
+    .pipe(map((e: Event) => {
+        e.preventDefault();
+        let {args} = (e as CustomEvent as IHistoryEvent<any>).detail;
+        if (history.state !== null) {
+            args = Object.assign(history.state, args);
+        }
+        return args;
+    }))
+    .subscribe((args: any) => {
+        const path = _jsonToParams(args);
+        history.pushState(args, "", `/?${path}`);
+    });
 
 window.onpopstate = function (event: PopStateEvent) {
     const state = event.state;
