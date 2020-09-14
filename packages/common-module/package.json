@@ -1,0 +1,32 @@
+{
+  "name": "@type/common-module",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "shibamoto <silverbirder@gmail.com>",
+  "homepage": "https://github.com/Silver-birder/micro-frontends-sample-code-4#readme",
+  "license": "ISC",
+  "main": "serve.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silver-birder/micro-frontends-sample-code-4.git"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "watch": "webpack -w",
+    "start": "node serve.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0",
+    "rxjs": "^6.6.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
