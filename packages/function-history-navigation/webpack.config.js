@@ -4,7 +4,8 @@ module.exports = {
     entry: './src/client.ts',
     output: {
         path: __dirname + '/public',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        libraryTarget: 'amd'
     },
     resolve: {
         extensions: ['.ts', '.js'],
@@ -13,7 +14,22 @@ module.exports = {
         rules: [
             {
                 test: /\.ts?$/,
-                use: 'ts-loader',
+                use: [
+                    {loader: 'babel-loader',
+                        options: {
+                            presets: [["@babel/preset-env", {
+                                useBuiltIns: "usage",
+                                corejs: 3 // or 2
+                            }],  '@babel/preset-typescript'],
+                            plugins: [
+                                "@babel/plugin-transform-classes",
+                                "@babel/proposal-class-properties",
+                                "@babel/proposal-object-rest-spread"
+                            ]
+                        }
+                    },
+                    {loader: 'ts-loader'}
+                ],
                 exclude: /node_modules/,
             },
         ],
