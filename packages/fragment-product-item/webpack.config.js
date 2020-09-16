@@ -19,10 +19,9 @@ module.exports = {
                         options: {
                             presets: [["@babel/preset-env", {
                                 useBuiltIns: "usage",
-                                corejs: 3 // or 2
-                            }],  '@babel/preset-typescript'],
+                                corejs: 3
+                            }]],
                             plugins: [
-                                "@babel/plugin-transform-classes",
                                 "@babel/proposal-class-properties",
                                 "@babel/proposal-object-rest-spread"
                             ]
