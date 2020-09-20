@@ -1,6 +1,23 @@
 import {LitElement, html, customElement, css, property, eventOptions} from 'lit-element';
 import {SearchBoxEvent, SearchBoxHistoryEvent} from "../event";
 import {eventType} from '@type/common-variable';
+import gql from "graphql-tag";
+import { ApolloClient } from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { from } from "apollo-link";
+import { HttpLink } from "apollo-link-http";
+
+// Linkを定義
+const http = new HttpLink({
+    uri: "http://localhost:4000"
+});
+const link = from([http]);
+
+// ApolloClientを呼び出しつつCacheを初期化
+const client = new ApolloClient({
+    link,
+    cache: new InMemoryCache()
+});
 
 @customElement('search-box')
 export class SearchBox extends LitElement {
@@ -30,6 +47,18 @@ export class SearchBox extends LitElement {
 
     @eventOptions({capture: true})
     private _onClick() {
+        client.query({
+            query: gql`
+                query  {
+                  books {
+                    title
+                    author
+                  }
+                }
+                `
+        }).then((res) => {
+            console.log(res.data)
+        });
         this.dispatchKeywordEvent(this.keyword);
         this.dispatchHistoryEvent(this.keyword);
     }

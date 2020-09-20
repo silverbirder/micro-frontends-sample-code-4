@@ -22,5 +22,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+  console.log(`Search API Server started at 4100 ${url}`);
 });
