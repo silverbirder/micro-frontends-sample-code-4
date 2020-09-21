@@ -9,3 +9,4 @@
 * JWT (token)
   * Auth0
     * https://auth0.com/docs/libraries/auth0-single-page-app-sdk
+* Kubernetes

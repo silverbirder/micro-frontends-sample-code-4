@@ -3,19 +3,22 @@ import { IResolvers } from './generated/graphql';
 
 
 export const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
+  type Product {
+    name: String
+    price: Int
+  }
+  input UserFilter {
+    name: String
   }
   type Query {
-    book(id: Int!): Book
-    books: [Book]
+    product(id: Int!): Product
+    products(filter: UserFilter): [Product]
   }
 `;
 
 export const resolvers: IResolvers = {
   Query: {
-    book: (_, args, ctx) => ctx.dataSources.booksProvider.getBook(args),
-    books: (_, __, ctx) => ctx.dataSources.booksProvider.getBooks()
+    product: (_, args, ctx) => ctx.dataSources.productsProvider.getProduct(args),
+    products: (_, args, ctx) => ctx.dataSources.productsProvider.getProducts(args)
   }
 };

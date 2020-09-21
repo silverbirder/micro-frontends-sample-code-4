@@ -41,6 +41,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.17",
+    "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "lit-element": "^2.4.0"
   }

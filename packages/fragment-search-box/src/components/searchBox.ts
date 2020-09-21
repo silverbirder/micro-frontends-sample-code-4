@@ -32,6 +32,9 @@ export class SearchBox extends LitElement {
     @property({type: String})
     keyword = `${this.getKeyword()}`;
 
+    @property({type: Array})
+    items = [];
+
     getKeyword() {
         return new URLSearchParams(location.search).get('q') || '';
     }
@@ -40,25 +43,15 @@ export class SearchBox extends LitElement {
         return html`
          <div>
             <input type="text" id="keyword" @change="${this._onChange}" value="${this.keyword}"><button @click="${this._onClick}">検索</button>     
-            <product-item></product-item>
+            ${this.items.map((item: any) => {
+                return html`<product-item name=${item.name}></product-item>`
+            })}
          </div>
     `;
     }
 
     @eventOptions({capture: true})
-    private _onClick() {
-        client.query({
-            query: gql`
-                query  {
-                  books {
-                    title
-                    author
-                  }
-                }
-                `
-        }).then((res) => {
-            console.log(res.data)
-        });
+    private async _onClick() {
         this.dispatchKeywordEvent(this.keyword);
         this.dispatchHistoryEvent(this.keyword);
     }
@@ -67,7 +60,18 @@ export class SearchBox extends LitElement {
         const search: SearchBoxEvent = {
             detail: {
                 args: keyword,
-                callback: (async (_: String) => {
+                callback: (async (keyword: String) => {
+                    const {data} = await client.query({
+                            query: gql`
+                                query  {
+                                  products(filter: {name: "${keyword}"}) {
+                                    name
+                                    price
+                                  }
+                                }
+                            `});
+                    const products = data.products;
+                    this.items = products;
                     const map = new Map();
                     this.update(map)
                 }).bind(this)

@@ -1,16 +1,16 @@
 import { ApolloServer } from 'apollo-server';
-import { BooksProvider } from './provider';
+import { ProductsProvider } from './provider';
 import { resolvers, typeDefs } from './resolver';
 
 export interface Context {
   dataSources: {
-    booksProvider: BooksProvider;
+    productsProvider: ProductsProvider;
   };
 }
 
 const dataSources = (): Context['dataSources'] => {
   return {
-    booksProvider: new BooksProvider()
+    productsProvider: new ProductsProvider()
   };
 };
 

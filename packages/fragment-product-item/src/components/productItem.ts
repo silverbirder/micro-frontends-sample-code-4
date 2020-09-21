@@ -1,4 +1,4 @@
-import {LitElement, html, customElement, css} from 'lit-element';
+import {LitElement, html, customElement, css, property} from 'lit-element';
 
 @customElement('product-item')
 export class ProductItem extends LitElement {
@@ -10,8 +10,11 @@ export class ProductItem extends LitElement {
       max-width: 800px;
     }
   `;
+    @property({type: String})
+    name = ``;
+
     render() {
-        return html`<div>item</div>`;
+        return html`<div>${this.name}</div>`;
     }
 }
 

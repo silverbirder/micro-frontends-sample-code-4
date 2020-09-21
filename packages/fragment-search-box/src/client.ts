@@ -1,4 +1,4 @@
-import {SearchBox} from './components/search-box'
+import {SearchBox} from './components/searchBox'
 
 export default {
     SearchBox: new SearchBox()

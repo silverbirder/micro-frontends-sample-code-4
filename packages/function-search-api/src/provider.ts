@@ -1,25 +1,35 @@
 import { DataSource } from 'apollo-datasource';
-import { QueryBookArgs } from './generated/graphql';
+import {Maybe, QueryProductArgs, UserFilter} from "src/generated/graphql";
 
-const books = [
+const products = [
   {
     id: 0,
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling'
+    name: 'Apple',
+    price: 100,
   },
   {
     id: 1,
-    title: 'Jurassic Park',
-    author: 'Michael Crichton'
+    name: 'Orange',
+    price: 150
+  },
+  {
+    id: 2,
+    name: 'Banana',
+    price: 50
+  },
+  {
+    id: 3,
+    name: 'Peach',
+    price: 100
   }
 ];
 
-export class BooksProvider extends DataSource {
-  public async getBook(args: QueryBookArgs) {
-    return books[args.id];
+export class ProductsProvider extends DataSource {
+  public async getProduct(args: QueryProductArgs) {
+    return products[args.id];
   }
 
-  public async getBooks() {
-    return books;
+  public async getProducts(args: { filter?: Maybe<UserFilter> } & any) {
+    return products.filter((p) => p.name.match(new RegExp(`.*${args?.filter.name}.*`, 'i')));
   }
 }
