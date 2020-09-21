@@ -1,2 +1,7 @@
 exports['rxjs'] = require('rxjs')
 exports['lit-element'] = require('lit-element')
+exports['graphql-tag'] = require('graphql-tag')
+exports['graphql'] = require('graphql')
+exports['apollo-client'] = require('apollo-client')
+exports['apollo-cache-inmemory'] = require('apollo-cache-inmemory')
+exports['apollo-link-http'] = require('apollo-link-http')

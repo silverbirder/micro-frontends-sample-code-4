@@ -34,6 +34,11 @@ module.exports = {
         ],
     },
     externals: {
-        'lit-element': 'lit-element'
+        'lit-element': 'lit-element',
+        'graphql-tag': 'graphql-tag',
+        'apollo-client': 'apollo-client',
+        'apollo-cache-inmemory': 'apollo-cache-inmemory',
+        'apollo-link-http': 'apollo-link-http',
+        'graphql': 'graphql'
     }
 }
