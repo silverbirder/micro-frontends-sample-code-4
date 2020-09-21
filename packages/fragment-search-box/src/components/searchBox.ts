@@ -7,13 +7,11 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { from } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 
-// Linkを定義
 const http = new HttpLink({
     uri: "http://localhost:4000"
 });
 const link = from([http]);
 
-// ApolloClientを呼び出しつつCacheを初期化
 const client = new ApolloClient({
     link,
     cache: new InMemoryCache()
@@ -98,6 +96,11 @@ export class SearchBox extends LitElement {
     @eventOptions({capture: true})
     private _onChange(e: Event) {
         this.keyword = (<HTMLInputElement>e.target).value;
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.dispatchKeywordEvent(this.keyword);
     }
 }
 
