@@ -1,0 +1,22 @@
+{
+  "name": "@controller/function-auth-management",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "shibamoto <silverbirder@gmail.com>",
+  "homepage": "https://github.com/Silver-birder/micro-frontends-sample-code-4#readme",
+  "license": "ISC",
+  "main": "lib/function-auth-management.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silver-birder/micro-frontends-sample-code-4.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
+  }
+}
