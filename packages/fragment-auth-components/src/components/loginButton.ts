@@ -1,9 +1,10 @@
 import {LitElement, html, customElement, css} from 'lit-element';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
+import {auth0Settings} from "../auth0.settings";
 
 @customElement('login-button')
-export class Login extends LitElement {
+export class LoginButton extends LitElement {
     static styles = css`
     :host {
       display: block;
@@ -18,9 +19,9 @@ export class Login extends LitElement {
         super();
         (async() => {
             this.auth0 = await createAuth0Client({
-                domain: '<DOMAIN>',
-                client_id: '<CLIENT_ID>',
-                redirect_uri: 'http://localhost:8080',
+                domain: auth0Settings.domain,
+                client_id: auth0Settings.clientId,
+                redirect_uri: auth0Settings.redirectUri,
                 cacheLocation: 'localstorage'
             });
             try {
@@ -43,6 +44,6 @@ export class Login extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'login-button': Login;
+        'login-button': LoginButton;
     }
 }

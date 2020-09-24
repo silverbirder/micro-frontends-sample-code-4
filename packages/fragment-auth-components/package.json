@@ -1,11 +1,11 @@
 {
-  "name": "@controller/function-auth-management",
+  "name": "@auth/fragment-auth-components",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "shibamoto <silverbirder@gmail.com>",
   "homepage": "https://github.com/Silver-birder/micro-frontends-sample-code-4#readme",
-  "license": "ISC",
-  "main": "lib/function-auth-management.js",
+  "license": "MIT",
+  "main": "src/client.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -16,7 +16,7 @@
   "scripts": {
     "build": "webpack -p",
     "watch": "webpack -w",
-    "start": "node function.js"
+    "start": "node fragment.js"
   },
   "bugs": {
     "url": "https://github.com/Silver-birder/micro-frontends-sample-code-4/issues"
