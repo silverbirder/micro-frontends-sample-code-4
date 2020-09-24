@@ -4,9 +4,13 @@
 * Skeleton UI
   * https://github.com/mui-org/material-ui/blob/master/packages/material-ui-lab/src/Skeleton/Skeleton.js
 * Open Tracing
+  * Tailor
 * Logging
+  * console.logの設計?
 * Cache
+  * service worker, indexeddb
 * Measure
+  * browser measure api
 * JWT (token)
   * Auth0
     * https://auth0.com/docs/libraries/auth0-single-page-app-sdk
