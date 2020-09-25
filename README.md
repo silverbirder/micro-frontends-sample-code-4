@@ -11,7 +11,5 @@
   * service worker, indexeddb
 * Measure
   * browser measure api
-* JWT (token)
-  * Auth0
-    * https://auth0.com/docs/libraries/auth0-single-page-app-sdk
+* HTTP2, HTTP3
 * Kubernetes

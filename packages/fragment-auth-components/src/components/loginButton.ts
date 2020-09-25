@@ -1,7 +1,4 @@
 import {LitElement, html, customElement, css} from 'lit-element';
-import createAuth0Client from '@auth0/auth0-spa-js';
-import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
-import {auth0Settings} from "../auth0.settings";
 
 @customElement('login-button')
 export class LoginButton extends LitElement {
@@ -13,32 +10,23 @@ export class LoginButton extends LitElement {
       max-width: 800px;
     }
   `;
-    auth0: Auth0Client | undefined;
+    loginStatus: boolean = false;
 
-    constructor() {
-        super();
-        (async() => {
-            this.auth0 = await createAuth0Client({
-                domain: auth0Settings.domain,
-                client_id: auth0Settings.clientId,
-                redirect_uri: auth0Settings.redirectUri,
-                cacheLocation: 'localstorage'
-            });
-            try {
-                await this.auth0.getTokenSilently();
-            } catch (error) {
-                if (error.error !== 'login_required') {
-                    throw error;
-                }
-            }
-        })();
-    }
     render() {
-        return html`<button @click="${this._onClick}">Click to Login</button>`;
+        return html`
+        <div>
+        ${this.loginStatus?
+            html`<button @click="${this._logout}">Click to Logout</button>`:
+            html`<button @click="${this._login}">Click to Login</button>`}
+        </div>`;
     }
 
-    private _onClick(_: Event) {
-        this.auth0?.loginWithRedirect()
+    private async _login(_: Event) {
+        await window.auth.login();
+    }
+
+    private async _logout(_: Event) {
+        await window.auth.logout()
     }
 }
 
