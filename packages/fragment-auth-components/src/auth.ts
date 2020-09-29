@@ -11,7 +11,7 @@ export interface IAuth {
 
     configureClient(): Promise<void>;
 
-    isAuthenticated(): Promise<boolean>;
+    callApi(): Promise<void>;
 }
 
 export class Auth implements IAuth {
@@ -23,6 +23,16 @@ export class Auth implements IAuth {
             client_id: auth0Settings.clientId,
             cacheLocation: 'localstorage'
         });
+
+        const query = window.location.search;
+        const shouldParseResult = query.includes("code=") && query.includes("state=");
+        if (shouldParseResult) {
+            try {
+                await this.auth0!!.handleRedirectCallback();
+            } catch (err) {
+                console.log("Error parsing redirect:", err);
+            }
+        }
     }
 
     async login(targetUrl?: String) {
@@ -33,9 +43,6 @@ export class Auth implements IAuth {
             if (targetUrl) {
                 options.appState = {targetUrl};
             }
-            if (!this.auth0) {
-                await this.configureClient();
-            }
             await this.auth0!!.loginWithRedirect(options);
         } catch (err) {
             console.log("Log in failed", err);
@@ -44,9 +51,6 @@ export class Auth implements IAuth {
 
     async logout() {
         try {
-            if (!this.auth0) {
-                await this.configureClient();
-            }
             this.auth0!!.logout({
                 returnTo: window.location.origin
             });
@@ -56,29 +60,19 @@ export class Auth implements IAuth {
     }
 
     async requireAuth(fn: Function, targetUrl: String) {
-        const isAuthenticated = await this.isAuthenticated();
+        const isAuthenticated = await this.auth0!!.isAuthenticated();
         if (isAuthenticated) {
             return fn();
         }
         return this.login(targetUrl);
     }
 
-    async isAuthenticated() {
-        if (!this.auth0) {
-            await this.configureClient();
-        }
-        return await this.auth0!!.isAuthenticated();
-    }
-
     async callApi() {
         try {
-            if (!this.auth0) {
-                await this.configureClient();
-            }
             const token = await this.auth0!!.getTokenSilently();
             console.log(token);
         } catch (e) {
             console.error(e);
         }
-    };
+    }
 }

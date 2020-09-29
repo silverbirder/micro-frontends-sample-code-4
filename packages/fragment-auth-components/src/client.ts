@@ -6,7 +6,12 @@ declare global {
         auth: IAuth,
     }
 }
+
 window.auth = new Auth();
+
+window.onload = async () => {
+    await window.auth.configureClient();
+};
 
 export default {
     LoginButton: new LoginButton()
