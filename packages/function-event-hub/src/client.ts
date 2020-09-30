@@ -10,4 +10,10 @@ fromEvent(window, eventType.eventHubName)
             await callback(args);
         }
     });
+fromEvent(window, eventType.authEventName)
+    .subscribe(async (e: Event) => {
+        e.preventDefault();
+        const {args} = (e as CustomEvent as IMyEvent<any, any>).detail;
+        document.querySelector('login-button')?.dispatchEvent(new CustomEvent("is-login", {detail: {isLogin: args}}))
+    });
 export {IMyEvent};

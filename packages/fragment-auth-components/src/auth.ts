@@ -2,6 +2,7 @@ import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
 import createAuth0Client from "@auth0/auth0-spa-js";
 import {auth0Settings} from "./auth0.settings";
 import {RedirectLoginOptions} from "@auth0/auth0-spa-js/src/global";
+import {AuthEvent, eventType} from "./event";
 
 export interface IAuth {
     auth0: Auth0Client | undefined
@@ -24,15 +25,14 @@ export class Auth implements IAuth {
             cacheLocation: 'localstorage'
         });
 
-        const query = window.location.search;
-        const shouldParseResult = query.includes("code=") && query.includes("state=");
-        if (shouldParseResult) {
-            try {
-                await this.auth0!!.handleRedirectCallback();
-            } catch (err) {
-                console.log("Error parsing redirect:", err);
+        const isLogin = await this.auth0!!.isAuthenticated();
+        const eventParams: AuthEvent = {
+            detail: {
+                args: isLogin
             }
-        }
+        };
+        const event: CustomEvent = new CustomEvent(eventType.authEventName, eventParams);
+        window.dispatchEvent(event);
     }
 
     async login(targetUrl?: String) {
@@ -43,7 +43,9 @@ export class Auth implements IAuth {
             if (targetUrl) {
                 options.appState = {targetUrl};
             }
-            await this.auth0!!.loginWithRedirect(options);
+            // can't use loginWithRedirect because ...
+            // @see https://community.auth0.com/t/invalid-state-on-reload-auth0-callback-url-using-auth0-spa-js-and-angular-8/36469/10
+            await this.auth0!!.loginWithPopup(options);
         } catch (err) {
             console.log("Log in failed", err);
         }

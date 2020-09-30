@@ -12,11 +12,22 @@ export class LoginButton extends LitElement {
   `;
     loginStatus: boolean = false;
 
+    constructor() {
+        super();
+
+        this.addEventListener('is-login', async (e: any) => {
+            console.log(e);
+            this.loginStatus = e.detail.isLogin;
+            const map = new Map();
+            this.update(map)
+        });
+    }
+
     render() {
         return html`
         <div>
-        ${this.loginStatus?
-            html`<button @click="${this._logout}">Click to Logout</button>`:
+        ${this.loginStatus ?
+            html`<button @click="${this._logout}">Click to Logout</button>` :
             html`<button @click="${this._login}">Click to Login</button>`}
         </div>`;
     }
