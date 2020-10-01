@@ -15,7 +15,8 @@ module.exports = {
             {
                 test: /\.ts?$/,
                 use: [
-                    {loader: 'babel-loader',
+                    {
+                        loader: 'babel-loader',
                         options: {
                             presets: [["@babel/preset-env", {
                                 useBuiltIns: "usage",
