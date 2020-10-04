@@ -3,7 +3,7 @@
 ## Setup
 
 ```shell script
-$ npm i
+$ npm install
 $ npm run install
 $ npm run start
 $ npm run start:fragments
